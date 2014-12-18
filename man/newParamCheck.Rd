@@ -33,6 +33,18 @@ Checking function arguments can be done in a manner that allows
   for all of the problems and return these messages all at once, allowing
   the user the opportunity to fix all of the arguments before proceeding.
 }
+\details{
+\code{newParamCheck} initializes an \code{ParamCheck} object.  This object
+stores the number of warnings, the number of errors, and the corresponding
+messages for the warnings and errors.
+
+\code{addError} and \code{addWarning} are used to add messages to the
+\code{ParamCheck} objects.
+
+\code{finishParamCheck} looks at the \code{ParamCheck} object.  If it finds
+any errors or warnings, those are printed for the user to review.  When
+errors are found, the function is terminated.
+}
 \examples{
 \dontrun{
 #* This example is taken from the discussion of argument checking at
@@ -57,13 +69,13 @@ cylinder.volume <- function(height, radius){
                        "When 'height' < 'radius', you have a short, awkward looking cylinder",
                        PCheck)
 
-finishParamCheck(PCheck)
+  finishParamCheck(PCheck)
 
-volume <- pi * radius^2 * height
-volume
+  volume <- pi * radius^2 * height
+  volume
 }
 
-#' cylinder.volume()
+cylinder.volume()
 cylinder.volume(height = -3)
 cylinder.volume(height = 3, radius = -2)
 cylinder.volume(height = 3, radius=2)
