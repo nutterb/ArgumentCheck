@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/nutterb/ParameterCheck.png?branch=master)](https://travis-ci.org/nutterb/ParameterCheck)
+
+
 ParameterCheck
 ==============
 
