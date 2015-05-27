@@ -16,6 +16,11 @@
 #'   warning
 #' @param pcheck An object with class \code{ParamCheck}, usually created by 
 #'   \code{newParamCheck}
+#' @param prefix A character string to prepend to the start of warning and
+#'   error messages.  For a package \code{foo} and function \code{bar}, 
+#'   using \code{prefix = "foo::bar"} can help pinpoint where the error
+#'   occurred, especially when errors occur in functions called within 
+#'   functions.
 #'   
 #' @details
 #' \code{newParamCheck} initializes an \code{ParamCheck} object.  This object
@@ -55,7 +60,7 @@
 #'                        "When 'height' < 'radius', you have a short, awkward looking cylinder",
 #'                        PCheck)
 #'   
-#'   finishParamCheck(PCheck)
+#'   finishParamCheck(PCheck, "cylinder.volume")
 #' 
 #'   volume <- pi * radius^2 * height
 #'   volume  
