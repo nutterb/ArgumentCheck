@@ -9,10 +9,12 @@ finishParamCheck <- function(pcheck, prefix=""){
   if (pcheck$n_warn > 0)
     warning(paste0("\n",
                    paste0(prefix, " - ",
-                          1:pcheck$n_warn, ": ", pcheck$warn_msg, collapse="\n")))
+                          1:pcheck$n_warn, ": ", pcheck$warn_msg, collapse="\n")),
+            call.=FALSE)
   
   if (pcheck$n_error > 0)
     stop(paste0("\n", 
                 paste0(prefix, " - ",
-                       1:pcheck$n_error, ": ", pcheck$error_msg, collapse="\n")))
+                       1:pcheck$n_error, ": ", pcheck$error_msg, collapse="\n")),
+         call.=FALSE)
 }

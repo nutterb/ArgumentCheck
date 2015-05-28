@@ -1,8 +1,8 @@
 Package: ParameterCheck
 Title: Improved Communication to Users with Respect to Problems in Function Arguments
-Version: 1.0
+Version: 0.9
 Author: Benjamin Nutter
-Maintainer: Benjamin Nutter <benjamin.nutter@gmail.com>
+Maintainer: Benjamin Nutter <nutter@battelle.org>
 Description: The typical process of checking arguments in functions is
     iterative.  In this process, an error may be returned and the user may fix
     it only to receive another error on a different argument.  'ParameterCheck'
@@ -11,5 +11,11 @@ Description: The typical process of checking arguments in functions is
     warnings in a single message.
 Depends:
     R (>= 3.0.0)
+Suggests: 
+    knitr,
+    testthat
+VignetteBuilder: knitr
 License: file LICENSE
 LazyData: true
+URL: https://github.com/nutterb/ParameterCheck
+BugReports: https://github.com/nutterb/ParameterCheck/issues
