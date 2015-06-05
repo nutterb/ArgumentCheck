@@ -7,6 +7,12 @@ sudo: required
 env:
  global:
    - CRAN: http://cran.rstudio.com
+   - WARNINGS_ARE_ERRORS=1
+   - R_BUILD_ARGS=--no-manual
+   - R_CHECK_ARGS=--no-manual --as-cran
+
+r_github_packages:
+  - Rexamine/stringi
 
 notifications:
   email:
