@@ -1,8 +1,9 @@
 <!--
 %\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Checking Parameter in R Functions}
+%\VignetteIndexEntry{Checking Parameters in R Functions}
 -->
 ---
+title: Checking Parameters in R Functions
 output:
   pdf_document:
     fig_caption: yes
@@ -13,6 +14,10 @@ output:
     number_section: yes
     toc: yes
 ---
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE}
+knitr::opts_chunk$set(error=TRUE)
+```
 
 Whenever I write a function, it often seems that unless I'm extraordinarily thoughtful, I write code that works well for my intent at the time, but as I test and further develop the code, I find that the function is hardly foolproof.  Most commonly, when I give my code to someone else to use, they inevitably use it in some way I hadn't anticipated.  This results in the function producing an error.  Or worse, the function executes, but quietly produces bad input.
 
