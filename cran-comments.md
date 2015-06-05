@@ -20,7 +20,7 @@ No repository set, so cyclic dependency check skipped
 The first note is expected.
 The second note is related to the repository setting.  I have not figured
 out how to set the repository in travis-ci or win-builder devel. 
-I'm reassured that this shouldn't be an issue since it passes
+I feel reassured that this shouldn't be an issue since it passes
 on my local machine and on win-builder release.
 
 ## Downstream dependencies
