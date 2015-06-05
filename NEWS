@@ -1,7 +1,7 @@
 ### 0.9 (1 June 2015)
 
 * Initial Release includes the following functions:
-  * `newParamCheck`
+  * `newArgCheck`
   * `addError`
   * `addWarning`
-  * `finishParamCheck`
+  * `finishArgCheck`

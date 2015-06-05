@@ -2,5 +2,5 @@
 
 export(addError)
 export(addWarning)
-export(finishParamCheck)
-export(newParamCheck)
+export(finishArgCheck)
+export(newArgCheck)

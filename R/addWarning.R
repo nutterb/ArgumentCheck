@@ -1,15 +1,15 @@
-#' @rdname newParamCheck
+#' @rdname newArgCheck
 #' @export addWarning
-#' 
+#'
 
-addWarning <- function(expr, msg, pcheck){
+addWarning <- function(expr, msg, argcheck){
   if (!is.logical(expr)) stop("'expr' must be a logical expression")
-  if (!"ParamCheck" %in% class(pcheck))
-    stop("'pcheck' must be an object of class 'ParamCheck'")
-  
+  if (!"ArgCheck" %in% class(argcheck))
+    stop("'argcheck' must be an object of class 'ArgCheck'")
+
   if (expr) {
-    pcheck$n_warn <- pcheck$n_warn + 1
-    pcheck$warn_msg <- c(pcheck$warn_msg, msg)
-  }  
-  return(pcheck)
+    argcheck$n_warn <- argcheck$n_warn + 1
+    argcheck$warn_msg <- c(argcheck$warn_msg, msg)
+  }
+  return(argcheck)
 }

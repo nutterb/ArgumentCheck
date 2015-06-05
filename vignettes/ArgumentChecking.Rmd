@@ -1,9 +1,9 @@
 <!--
 %\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Checking Parameters in R Functions}
+%\VignetteIndexEntry{Checking Arguments in R Functions}
 -->
 ---
-title: Checking Parameters in R Functions
+title: Checking Arguments in R Functions
 output:
   pdf_document:
     fig_caption: yes
@@ -59,36 +59,36 @@ cylinder.volume(height = 3,
                 radius = -4)
 ```
 
-The philosophy behind `ParameterCheck` is that, as much as possible, we should return to the user as many error and warning messages at one time as we can.  This will inevitably increase the length of the function code, but the benefits should be pretty clear.
+The philosophy behind `ArgumentCheck` is that, as much as possible, we should return to the user as many error and warning messages at one time as we can.  This will inevitably increase the length of the function code, but the benefits should be pretty clear.
 
-With `ParameterCheck`, we'll create an object that, based on the results of a logical test, will store any error and warning messages we wish to capture and allow us to delay the call to `stop` until we have performed all of our checks.
+With `ArgumentCheck`, we'll create an object that, based on the results of a logical test, will store any error and warning messages we wish to capture and allow us to delay the call to `stop` until we have performed all of our checks.
 
 With this philosophy in mind, let's rewrite `cylinder.volume` to return two error messages simultaneously.
 
 ```{r}
 cylinder.volume <- function(height, radius)
 {
-  #* Establish a new 'ParamCheck' object
-  Check <- ParameterCheck::newParamCheck()
+  #* Establish a new 'ArgCheck' object
+  Check <- ArgumentCheck::newArgCheck()
   
   #* Add an error if height < 0
-  Check <- ParameterCheck::addError(height < 0,
+  Check <- ArgumentCheck::addError(height < 0,
              msg = "'height' must be >= 0",
-             pcheck = Check)
+             argcheck = Check)
   
   #* Add an error if radius < 0
-  Check <- ParameterCheck::addError(radius < 0,
+  Check <- ArgumentCheck::addError(radius < 0,
              msg = "'radius' must be >= 0",
-             pcheck = Check)
+             argcheck = Check)
   
   #* Return errors and warnings (if any)
-  ParameterCheck::finishParamCheck(Check)
+  ArgumentCheck::finishArgCheck(Check)
   
   pi * radius^2 * height 
 }
 ```
 
-With this new definition, we first create an object to store our messages, we check the arguments and add any errors we note, and the `finishParamCheck` will call `stop` if there are any errors and `warning` if there are any warnings.  The final result looks like this.
+With this new definition, we first create an object to store our messages, we check the arguments and add any errors we note, and the `finishArgCheck` will call `stop` if there are any errors and `warning` if there are any warnings.  The final result looks like this.
 
 ```{r}
 cylinder.volume(height = -3,
@@ -96,35 +96,6 @@ cylinder.volume(height = -3,
 ```
 
 Notice that in the previous example, we get both of the errors.  This allows us to make both of the necessary changes to our function call prior to calling it again.  In functions with greater complexity, this has the potential to reduce the time it takes to get the function call right.
-
-One thing we should also note, however, is that our error message starts with "`Error:`" but doesn't really tell us where the error occurred.  This happens because when `finishParamCheck` calls `stop`, it uses `call.=FALSE`.  If it used `call.=TRUE`, the error message would start with "`Error in ParameterCheck::finishParamCheck(Check) :`".  This isn't entirely helpful, because it doesn't really tell us where the error is.  In this situation, it may not be a big deal because we're calling the function from the global environment.   However, if we call a function from within another function, this isn't really going to help us trouble shoot the problem.  For this reason, I recommend using the `prefix` argument in `finishParamCheck`.  Typically, I use the function I am trying to execute as the prefix to indicate exactly where the error occurred.
-
-```{r}
-cylinder.volume <- function(height, radius)
-{
-  #* Establish a new 'ParamCheck' object
-  Check <- ParameterCheck::newParamCheck()
-  
-  #* Add an error if height < 0
-  Check <- ParameterCheck::addError(height < 0,
-             msg = "'height' must be >= 0",
-             pcheck = Check)
-  
-  #* Add an error if radius < 0
-  Check <- ParameterCheck::addError(radius < 0,
-             msg = "'radius' must be >= 0",
-             pcheck = Check)
-  
-  #* Return errors and warnings (if any)
-  ParameterCheck::finishParamCheck(Check,
-                                   prefix = "cylinder.volume")
-  
-  pi * radius^2 * height 
-}
-
-cylinder.volume(height = -3,
-                radius = -4)
-```
 
 Something else you may want to note is that so far, the parameter checking on this function is flawed.  The way we've written the checks assumes that we won't be passing vectors to `cylinder.volume`.  The behavior gets kind of strange when we do.  Look at the following results:
 
@@ -142,9 +113,9 @@ As you can tell, the result depends on the length of the vectors and the value o
 At this point, we have two options we can consider.  We could terminate the function if _any_ negative values are noticed, perhaps by adding `any` to our logical expression, as below:
 
 ```{r, eval=FALSE}
-  Check <- ParameterCheck::addError(any(height < 0),
+  Check <- ArgumentCheck::addError(any(height < 0),
              msg = "'height' must be >= 0",
-             pcheck = Check)
+             argcheck = Check)
 ```
 
 Alternatively, we can allow the function to process, but we can adjust the inputs so that they don't include the negative values.  For something like this, it is better to use the `addWarning` function instead of `addError`.
@@ -152,24 +123,23 @@ Alternatively, we can allow the function to process, but we can adjust the input
 ```{r}
 cylinder.volume <- function(height, radius)
 {
-  #* Establish a new 'ParamCheck' object
-  Check <- ParameterCheck::newParamCheck()
+  #* Establish a new 'ArgCheck' object
+  Check <- ArgumentCheck::newArgCheck()
   
   #* Add an warning if height < 0
-  Check <- ParameterCheck::addWarning(any(height < 0),
+  Check <- ArgumentCheck::addWarning(any(height < 0),
              msg = "'height' must be >= 0. Negative values have been set to NA",
-             pcheck = Check)
+             argcheck = Check)
   if (any(height < 0)) height[height < 0] <- NA
   
   #* Add an error if radius < 0
-  Check <- ParameterCheck::addWarning(any(radius < 0),
+  Check <- ArgumentCheck::addWarning(any(radius < 0),
              msg = "'radius' must be >= 0. Negative values have been set to NA",
-             pcheck = Check)
+             argcheck = Check)
   if (any(radius < 0)) radius[radius < 0] <- NA
   
   #* Return errors and warnings (if any)
-  ParameterCheck::finishParamCheck(Check,
-                                   prefix = "cylinder.volume")
+  ArgumentCheck::finishArgCheck(Check)
   
   pi * radius^2 * height 
 }
