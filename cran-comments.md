@@ -4,6 +4,13 @@
 * win-builder (devel and release)
 
 ## R CMD check results
+The package name has been changed to `ArgumentCheck` per 
+Professor Ripley's recommendation.
+
+The note regarding the Non-FOSS package license has been resolved.  
+I apologize for misinterpreting this note before and appreciate
+the correciton.
+
 No Notes, Warnings, or Errors were detected when running CHECK 
 on the local Windows install, nor on the win-builder release install.
 
@@ -26,3 +33,5 @@ on my local machine and on win-builder release.
 ## Downstream dependencies
 There are no downstream dependencies for this package
 at this time.
+
+Thanks again.

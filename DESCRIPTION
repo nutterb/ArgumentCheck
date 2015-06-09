@@ -16,7 +16,7 @@ Suggests:
     knitr,
     testthat
 VignetteBuilder: knitr
-License: GPL-3 | file LICENSE
+License: GPL-3
 LazyData: true
 URL: https://github.com/nutterb/ArgumentCheck
 BugReports: https://github.com/nutterb/ArgumentCheck/issues
