@@ -5,6 +5,13 @@
 \alias{ArgumentCheck}
 \alias{ArgumentCheck-package}
 \title{Improved Argument Check Communication}
+\source{
+The concepts of this package are heavily influenced by
+
+Karafa, MT, "Building Better Macros: Basic Parameter Checking for Avoiding "ID10T" Errors.
+SAS Global Forum, 2011
+\url{http://support.sas.com/resources/papers/proceedings11/096-2011.pdf}
+}
 \description{
 The typical process of checking arguments in functions is iterative.  In
 this process, an error may be returned and the user may fix it only to receive

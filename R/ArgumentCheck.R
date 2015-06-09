@@ -6,6 +6,13 @@
 #' way to perform argument checks allowing the programmer to run all of the checks
 #' and then return all of the errors and warnings in a single message.
 #'
+#' @source
+#' The concepts of this package are heavily influenced by
+#'
+#' Karafa, MT, "Building Better Macros: Basic Parameter Checking for Avoiding "ID10T" Errors.
+#' SAS Global Forum, 2011
+#' \url{http://support.sas.com/resources/papers/proceedings11/096-2011.pdf}
+#'
 #' @examples
 #' \dontrun{
 #' #* This example is taken from the discussion of argument checking at
