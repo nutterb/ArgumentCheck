@@ -8,8 +8,14 @@ addWarning <- function(expr, msg, argcheck){
     stop("'argcheck' must be an object of class 'ArgCheck'")
 
   if (expr) {
-    argcheck$n_warn <- argcheck$n_warn + 1
-    argcheck$warn_msg <- c(argcheck$warn_msg, msg)
+#     argcheck$n_warn <- argcheck$n_warn + 1
+#     argcheck$warn_msg <- c(argcheck$warn_msg, msg)
+    assign("n_warn", 
+           get("n_warn", envir = argcheck) + 1, 
+           envir = argcheck)
+    assign("warn_msg", 
+           c(get("warn_msg", envir = argcheck),
+             msg), 
+           envir = argcheck)
   }
-  return(argcheck)
 }
