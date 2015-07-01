@@ -69,10 +69,20 @@
 #' }
 
 newArgCheck <- function(){
-  argcheck <- list(n_warn = 0,
-                 warn_msg = NULL,
-                 n_error = 0,
-                 error_msg = NULL)
-  class(argcheck) <- c("ArgCheck", "list")
+#* Replacing the list with an environment
+#   argcheck <- list(n_warn = 0,
+#                  warn_msg = NULL,
+#                  n_error = 0,
+#                  error_msg = NULL)
+#   class(argcheck) <- c("ArgCheck", "list")
+#   argcheck
+  argcheck <- new.env()
+  assign("n_warn", 0, envir = argcheck)
+  assign("warn_msg", NULL, envir = argcheck)
+  assign("n_error", 0, envir = argcheck)
+  assign("error_msg", NULL, envir = argcheck)
+  assign("n_message", 0, envir = argcheck)
+  assign("message_msg", NULL, envir = argcheck)
+  class(argcheck) <- c("ArgCheck", "environment")
   argcheck
 }

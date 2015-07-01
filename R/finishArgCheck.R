@@ -9,13 +9,27 @@ finishArgCheck <- function(argcheck){
   if (!"ArgCheck" %in% class(argcheck))
     stop("'argcheck' must be an object of class 'ArgCheck'")
 
-  if (argcheck$n_warn > 0)
+  if (get("n_warn", envir = argcheck) > 0)
     warning(paste0(c("", fn_call,
-                   paste0(1:argcheck$n_warn, ": ", argcheck$warn_msg)), collapse="\n"),
+                   paste0(1:get("n_warn", envir = argcheck), 
+                          ": ", 
+                          get("warn_msg", envir = argcheck))), 
+                   collapse="\n"),
             call.=FALSE)
-
-  if (argcheck$n_error > 0)
+  
+  if (get("n_message", envir = argcheck) > 0)
+    message(paste0(c("", fn_call,
+                     paste0(1:get("n_message", envir = argcheck),
+                            ": ",
+                            get("message_msg", envir = argcheck))),
+                   collapse = "\n"))
+  
+  if (get("n_error", envir = argcheck) > 0)
     stop(paste0(c("", fn_call,
-                paste0(1:argcheck$n_error, ": ", argcheck$error_msg)), collapse="\n"),
+                paste0(1:get("n_error", envir = argcheck), 
+                       ": ", 
+                       get("error_msg", argcheck))), collapse="\n"),
          call.=FALSE)
+  
+
 }
