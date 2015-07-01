@@ -16,11 +16,20 @@ finishArgCheck <- function(argcheck){
                           get("warn_msg", envir = argcheck))), 
                    collapse="\n"),
             call.=FALSE)
-
+  
+  if (get("n_message", envir = argcheck) > 0)
+    message(paste0(c("", fn_call,
+                     paste0(1:get("n_message", envir = argcheck),
+                            ": ",
+                            get("message_msg", envir = argcheck))),
+                   collapse = "\n"))
+  
   if (get("n_error", envir = argcheck) > 0)
     stop(paste0(c("", fn_call,
                 paste0(1:get("n_error", envir = argcheck), 
                        ": ", 
                        get("error_msg", argcheck))), collapse="\n"),
          call.=FALSE)
+  
+
 }
