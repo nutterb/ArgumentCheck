@@ -1,6 +1,6 @@
 context("finishArgCheck Errors and Warnings")
 
-test_that("Cast Appropriate Error"
+test_that("Cast Appropriate Error",
 {
   Check <- newArgCheck()
   addError(TRUE,
@@ -11,7 +11,7 @@ test_that("Cast Appropriate Error"
 
 })
 
-test_that("Cast Appropriate Warning"
+test_that("Cast Appropriate Warning",
 {
   Check <- newArgCheck()
   addWarning(TRUE,
@@ -21,7 +21,7 @@ test_that("Cast Appropriate Warning"
                  "1: New Warning")
 })
 
-test_that("Cast Simultaneous Error and Warning"
+test_that("Cast Simultaneous Error and Warning",
 {
   Check <- newArgCheck()
   addError(TRUE,
