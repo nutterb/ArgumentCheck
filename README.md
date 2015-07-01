@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/nutterb/ArgumentCheck.png?branch=devel-envi)](https://travis-ci.org/nutterb/ArgumentCheck)
 
-
 ArgumentCheck
 ==============
 
