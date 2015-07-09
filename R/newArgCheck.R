@@ -10,6 +10,8 @@
 #'   for all of the problems and return these messages all at once, allowing
 #'   the user the opportunity to fix all of the arguments before proceeding.
 #'
+#' @param list A logical indicating if the check results should be stored
+#'   in a list or in an environment.
 #' @param expr A logical expression that, when \code{TRUE} indicates an error
 #'   or warning should be returned.
 #' @param msg A Character string giving the message to return with an error or
@@ -68,21 +70,29 @@
 #' cylinder.volume(height = -8, radius = 4)
 #' }
 
-newArgCheck <- function(){
-#* Replacing the list with an environment
-#   argcheck <- list(n_warn = 0,
-#                  warn_msg = NULL,
-#                  n_error = 0,
-#                  error_msg = NULL)
-#   class(argcheck) <- c("ArgCheck", "list")
-#   argcheck
-  argcheck <- new.env()
-  assign("n_warn", 0, envir = argcheck)
-  assign("warn_msg", NULL, envir = argcheck)
-  assign("n_error", 0, envir = argcheck)
-  assign("error_msg", NULL, envir = argcheck)
-  assign("n_message", 0, envir = argcheck)
-  assign("message_msg", NULL, envir = argcheck)
-  class(argcheck) <- c("ArgCheck", "environment")
-  argcheck
+newArgCheck <- function(list = TRUE){
+  if (list)
+  {
+    argcheck <- list(n_warn = 0,
+                     warn_msg = NULL,
+                     n_error = 0,
+                     error_msg = NULL,
+                     n_message = 0,
+                     message_msg = NULL)
+    class(argcheck) <- c("ArgCheck", "list")
+    return(argcheck)
+  }
+  else 
+  {
+    argcheck <- new.env()
+    assign("n_warn", 0, envir = argcheck)
+    assign("warn_msg", NULL, envir = argcheck)
+    assign("n_error", 0, envir = argcheck)
+    assign("error_msg", NULL, envir = argcheck)
+    assign("n_message", 0, envir = argcheck)
+    assign("message_msg", NULL, envir = argcheck)
+    class(argcheck) <- c("ArgCheck", "environment")
+    return(argcheck)
+  }
 }
+

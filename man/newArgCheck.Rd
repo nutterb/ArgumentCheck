@@ -16,7 +16,7 @@ addWarning(expr, msg, argcheck)
 
 finishArgCheck(argcheck)
 
-newArgCheck()
+newArgCheck(list = TRUE)
 }
 \arguments{
 \item{expr}{A logical expression that, when \code{TRUE} indicates an error
@@ -27,6 +27,9 @@ warning}
 
 \item{argcheck}{An object with class \code{ArgCheck}, usually created by
   \code{newArgCheck}}
+
+\item{list}{A logical indicating if the check results should be stored
+in a list or in an environment.}
 }
 \description{
 Checking function arguments can be done in a manner that allows

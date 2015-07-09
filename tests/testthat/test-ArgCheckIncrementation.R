@@ -2,7 +2,7 @@ context("argCheck Incrementation")
 
 test_that("argCheck Incrementation",
 {
-  Check <- newArgCheck()
+  Check <- newArgCheck(list = FALSE)
   addError(TRUE,
            "New Error",
            Check)
