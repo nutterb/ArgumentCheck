@@ -8,28 +8,22 @@
 \alias{newArgCheck}
 \title{Argument Checking}
 \usage{
-addError(expr, msg, argcheck)
+addError(msg, argcheck)
 
-addMessage(expr, msg, argcheck)
+addMessage(msg, argcheck)
 
-addWarning(expr, msg, argcheck)
+addWarning(msg, argcheck)
 
 finishArgCheck(argcheck)
 
-newArgCheck(list = TRUE)
+newArgCheck()
 }
 \arguments{
-\item{expr}{A logical expression that, when \code{TRUE} indicates an error
-or warning should be returned.}
-
 \item{msg}{A Character string giving the message to return with an error or
 warning}
 
 \item{argcheck}{An object with class \code{ArgCheck}, usually created by
   \code{newArgCheck}}
-
-\item{list}{A logical indicating if the check results should be stored
-in a list or in an environment.}
 }
 \description{
 Checking function arguments can be done in a manner that allows
@@ -57,29 +51,34 @@ errors are found, the function is terminated.
 #* This example is taken from the discussion of argument checking at
 #* http://www.r-bloggers.com/programming-with-r---checking-function-arguments/
 cylinder.volume <- function(height, radius){
-  ArgCheck <- newArgCheck()
-  ArgCheck <- addError(missing(height),
-                     "A value for 'height' was not provided",
-                     ArgCheck)
-  ArgCheck <- addError(ifelse(!missing(height), height < 0, FALSE),
-                     "'height' must be a non-negative number",
-                     ArgCheck)
-  ArgCheck <- addError(missing(radius),
-                     "A value for 'radius' was not provided",
-                     ArgCheck)
-  ArgCheck <- addError(ifelse(!missing(radius), radius < 0, FALSE),
-                     "'radius' must be a non-negative number",
-                     ArgCheck)
+  Check <- newArgCheck()
+  if (missing(height)){
+    addError("A value for 'height' was not provided",
+             Check)
+  } else{
+    if (height < 0)
+      addError("'height' must be a non-negative number",
+               Check)
+  }
 
-  ArgCheck <- addWarning(ifelse(!missing(height) & !missing(radius),
-                              height < radius, FALSE),
-                       "When 'height' < 'radius', you have a short, awkward looking cylinder",
-                       ArgCheck)
+  if (missing(height)){
+    addError("A value for 'radius' was not provided",
+             Check)
+  } else {
+    if (radius < 0)
+      addError("'radius' must be a non-negative number",
+               Check)
+  }
 
-  finishArgCheck(ArgCheck, "cylinder.volume")
+  if (!missing(height) & !missing(radius)){
+    if (height < radius)
+      addWarning("When 'height' < 'radius', you have a short, awkward looking cylinder",
+                 Check)
+  }
 
-  volume <- pi * radius^2 * height
-  volume
+  finishArgCheck(Check)
+
+  pi * radius^2 * height
 }
 
 cylinder.volume()

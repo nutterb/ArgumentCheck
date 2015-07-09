@@ -1,7 +1,5 @@
-.onLoad <- function(libname,pkgname)
+.onAttach <- function(libname, pkgname)
 {
-  packageStartupMessage(paste0("In a future version of 'ArgumentCheck', default setting of the ",
-                               "'list' argument in 'newArgCheck' will be changed from TRUE to ",
-                               "FALSE. Please consider hard coding this argument in your ",
-                               "existing code"))
+  packageStartupMessage(paste0("ArgumentCheck 0.10.0 is not backward compatible with version ",
+                               "0.9.0.\nPlease see the NEWS file or the GitHub page for details."))
 }

@@ -2,12 +2,10 @@ context("argCheck Incrementation")
 
 test_that("argCheck Incrementation",
 {
-  Check <- newArgCheck(list = FALSE)
-  addError(TRUE,
-           "New Error",
+  Check <- newArgCheck()
+  addError("New Error",
            Check)
-  addWarning(TRUE,
-             "New Warning",
+  addWarning("New Warning",
              Check)
   expect_equal(mget(c("n_error", "error_msg", "n_warn", "warn_msg"),
                     envir = Check),

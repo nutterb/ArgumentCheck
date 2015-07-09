@@ -2,19 +2,13 @@ context("New Argument Check Environment")
 
 test_that("New Argument Check Environment Has Correct Classes",
 {
-  expect_equal(class(newArgCheck(list = FALSE)),
+  expect_equal(class(newArgCheck()),
                c("ArgCheck", "environment"))
-})
-
-test_that("New Argument List Environment Has Correct Classes",
-{
-  expect_equal(class(newArgCheck(list = TRUE)),
-               c("ArgCheck", "list"))
 })
 
 test_that("New Argument Check Has Correct Initial Values",
 {
-  Check <- newArgCheck(list = FALSE)
+  Check <- newArgCheck()
   expect_equal(mget(c("n_error", "error_msg", "n_warn", "warn_msg", 
                       "n_message", "message_msg"),
                     envir = Check),
