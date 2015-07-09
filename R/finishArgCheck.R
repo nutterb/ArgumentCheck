@@ -8,28 +8,31 @@ finishArgCheck <- function(argcheck){
 
   if (!"ArgCheck" %in% class(argcheck))
     stop("'argcheck' must be an object of class 'ArgCheck'")
+  
+  if (class(argcheck)[2] == "environment") 
+    argcheck = mget(ls(envir = argcheck),
+                    envir = argcheck)
 
-  if (get("n_warn", envir = argcheck) > 0)
+  if (argcheck$n_warn > 0)
     warning(paste0(c("", fn_call,
-                   paste0(1:get("n_warn", envir = argcheck), 
+                   paste0(1:argcheck$n_warn, 
                           ": ", 
-                          get("warn_msg", envir = argcheck))), 
+                          argcheck$warn_msg)), 
                    collapse="\n"),
             call.=FALSE)
   
-  if (get("n_message", envir = argcheck) > 0)
+  if (argcheck$n_message > 0)
     message(paste0(c("", fn_call,
-                     paste0(1:get("n_message", envir = argcheck),
+                     paste0(1:argcheck$n_message,
                             ": ",
-                            get("message_msg", envir = argcheck))),
+                            argcheck$message_msg)),
                    collapse = "\n"))
   
-  if (get("n_error", envir = argcheck) > 0)
+  if (argcheck$n_error > 0)
     stop(paste0(c("", fn_call,
-                paste0(1:get("n_error", envir = argcheck), 
+                paste0(1:argcheck$n_error, 
                        ": ", 
-                       get("error_msg", argcheck))), collapse="\n"),
+                       argcheck$error_msg)), 
+                collapse="\n"),
          call.=FALSE)
-  
-
 }

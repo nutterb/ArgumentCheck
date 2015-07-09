@@ -2,7 +2,7 @@ context("finishArgCheck Errors and Warnings")
 
 test_that("Cast Appropriate Error",
 {
-  Check <- newArgCheck()
+  Check <- newArgCheck(list = FALSE)
   addError(TRUE,
            "New Error",
            Check)
@@ -13,7 +13,7 @@ test_that("Cast Appropriate Error",
 
 test_that("Cast Appropriate Warning",
 {
-  Check <- newArgCheck()
+  Check <- newArgCheck(list = FALSE)
   addWarning(TRUE,
              "New Warning",
              Check)
@@ -23,7 +23,7 @@ test_that("Cast Appropriate Warning",
 
 test_that("Cast Simultaneous Error and Warning",
 {
-  Check <- newArgCheck()
+  Check <- newArgCheck(list = FALSE)
   addError(TRUE,
            "New Error",
            Check)
