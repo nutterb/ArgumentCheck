@@ -9,9 +9,9 @@ finishArgCheck <- function(argcheck){
   if (!"ArgCheck" %in% class(argcheck))
     stop("'argcheck' must be an object of class 'ArgCheck'")
   
-  if (class(argcheck)[2] == "environment") 
-    argcheck = mget(ls(envir = argcheck),
-                    envir = argcheck)
+  #* Create a list of the objects in the `argcheck` environment
+  argcheck <- mget(ls(envir = argcheck),
+                   envir = argcheck)
 
   if (argcheck$n_warn > 0)
     warning(paste0(c("", fn_call,
