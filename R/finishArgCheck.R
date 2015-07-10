@@ -4,7 +4,7 @@
 
 finishArgCheck <- function(argcheck){
   fn_call <- sys.call(-1)
-  fn_call <- capture.output(fn_call)
+  fn_call <- utils::capture.output(fn_call)
 
   if (!"ArgCheck" %in% class(argcheck))
     stop("'argcheck' must be an object of class 'ArgCheck'")

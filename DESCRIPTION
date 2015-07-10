@@ -19,4 +19,4 @@ VignetteBuilder: knitr
 License: GPL-3
 LazyData: true
 URL: https://github.com/nutterb/ArgumentCheck
-BugReports: https://github.com/nutterb/ArgumentCheck/issues
+BugReports: https://github.com/nutterb/ArgumentCheck/issues/

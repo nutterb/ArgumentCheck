@@ -54,6 +54,7 @@
 #'           c("gaussian", "epanechnikov", "rectangular", "triangular"),
 #'           several.ok = TRUE)
 
+
 match_arg <- function (arg, choices, several.ok = FALSE, argcheck) 
 {
   if (missing(choices)) {
