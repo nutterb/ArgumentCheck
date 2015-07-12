@@ -1,37 +1,19 @@
 ## Test environments
-* local Windows install (devel-2015-06-02 r68457)
-* ubuntu 12.04 (on travis-ci), R 3.2.0
+* local Windows install (devel-2015-07-08 r68642)
+* x86_64-pc-linux-gnu (64-bit) (on travis-ci), R 3.2.1
 * win-builder (devel and release)
 
 ## R CMD check results
-The package name has been changed to `ArgumentCheck` per 
-Professor Ripley's recommendation.
+There were no ERRORS or WARNINGS in any of the checks.
 
-The note regarding the Non-FOSS package license has been resolved.  
-I apologize for misinterpreting this note before and appreciate
-the correciton.
-
-No Notes, Warnings, or Errors were detected when running CHECK 
-on the local Windows install, nor on the win-builder release install.
-
-I receive the following two notes from the travis-ci check and the 
-win-builder devel release:
-
-checking CRAN incoming feasibility ... NOTE
-Maintainer: 'Benjamin Nutter <benjamin.nutter@gmail.com>'
-New submission
-
-checking package dependencies ... NOTE
+NOTE: on win-builder (devel and release) and travis-ci
 No repository set, so cyclic dependency check skipped
-  
-The first note is expected.
-The second note is related to the repository setting.  I have not figured
-out how to set the repository in travis-ci or win-builder devel. 
-I feel reassured that this shouldn't be an issue since it passes
-on my local machine and on win-builder release.
+
+This NOTE was not observed on the local install 
+
 
 ## Downstream dependencies
 There are no downstream dependencies for this package
 at this time.
 
-Thanks again.
+Many thanks.

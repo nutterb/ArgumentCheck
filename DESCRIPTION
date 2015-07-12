@@ -1,7 +1,7 @@
 Package: ArgumentCheck
-Date: 2015-06-04
+Date: 2015-07-10
 Title: Improved Communication to Users with Respect to Problems in Function Arguments
-Version: 0.9.0
+Version: 0.10.0
 Author: Benjamin Nutter
 Maintainer: Benjamin Nutter <benjamin.nutter@gmail.com>
 Description: The typical process of checking arguments in functions is
@@ -19,4 +19,4 @@ VignetteBuilder: knitr
 License: GPL-3
 LazyData: true
 URL: https://github.com/nutterb/ArgumentCheck
-BugReports: https://github.com/nutterb/ArgumentCheck/issues
+BugReports: https://github.com/nutterb/ArgumentCheck/issues/

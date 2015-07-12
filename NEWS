@@ -1,3 +1,26 @@
+### 0.10.0 (10 July 2015)
+* `addError`, `addWarning`, and `addMessage` will no longer carry the `expr` argument.
+* List objects are no longer used for the buffer.  Only environments are used.
+* Addition of `match_arg` an analog to (in fact, a copy of) `match.arg`.  
+  When `match_arg` fails, the first option in the `choices` argument is retained.  
+  If appropriate, this may be used to allow further argument checking while still using 
+  the `match.arg` approach to choosing an option.
+
+### 0.9.2 (4 July 2015)
+* Reversing some previous changes to allow lists or 
+  environments to be used for the buffer.  The 
+  environment has an interesting side effect where
+  it can be accessed by other functions nested within
+  a function, potentially giving the ability to 
+  capture all of the checks from a series of nested
+  functions.  This list won't accept this interaction.
+  I figured having the option here couldn't hurt.
+
+### 0.9.1 (30 June 2015)
+* Adds tests
+* Adds `addMessage`
+* Changes the buffer to an environment
+
 ### 0.9 (1 June 2015)
 
 * Initial Release includes the following functions:
