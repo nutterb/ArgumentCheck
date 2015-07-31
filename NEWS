@@ -1,3 +1,8 @@
+### 0.10.1 (01 August 2015)
+* Fixes a bug in `match_arg` that returns multiple rows per error when elements of a 
+  list are used in `arg`.  (for example, x$y was getting an error 
+  message for 'x', '$', and 'y').
+
 ### 0.10.0 (10 July 2015)
 * `addError`, `addWarning`, and `addMessage` will no longer carry the `expr` argument.
 * List objects are no longer used for the buffer.  Only environments are used.

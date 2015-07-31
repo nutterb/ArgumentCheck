@@ -64,13 +64,13 @@ match_arg <- function (arg, choices, several.ok = FALSE, argcheck)
   if (is.null(arg)) 
     return(choices[1L])
   else if (!is.character(arg)) 
-    addError(paste0("'", substitute(arg), "' must be NULL or a character vector"),
+    addError(paste0("'", deparse(substitute(arg)), "' must be NULL or a character vector"),
              argcheck)
   if (!several.ok) {
     if (identical(arg, choices)) 
       return(arg[1L])
     if (length(arg) > 1L) 
-      addError(paste0("'", substitute(arg), "' must be of length 1"),
+      addError(paste0("'", deparse(substitute(arg)), "' must be of length 1"),
                argcheck)
   }
   else if (length(arg) == 0L) 
@@ -78,7 +78,7 @@ match_arg <- function (arg, choices, several.ok = FALSE, argcheck)
              argcheck)
   i <- pmatch(arg, choices, nomatch = 0L, duplicates.ok = TRUE)
   if (all(i == 0L)) 
-    addError(gettextf(paste0("'", substitute(arg), "' should be one of %s"), 
+    addError(gettextf(paste0("'", deparse(substitute(arg)), "' should be one of %s"), 
                       paste(dQuote(choices),
                             collapse = ", "),
                       domain = NA),
