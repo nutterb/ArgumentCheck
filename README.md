@@ -4,7 +4,19 @@
 ArgumentCheck
 ==============
 
-Simple Tools for Facilitating Informative Parameter Checks in R Functions.
+## `ArgumentCheck` has been deprecated!!
+
+If you've been using `ArgumentCheck`, I apologize, but I will no longer be maintaining
+this package.  `checkmate` 1.6.3 (2016-10-23) introduced assert collections which allow
+error messages to be collected and reported together.  This means that `checkmate` now 
+provides the core feature of `ArgumentCheck` and does argument checking better.  It 
+really is a much better package, and I encourage you to switch.
+
+If you need assistance migrating from `ArgumentCheck` to `checkmate`, please file an 
+issue and I will do my best to assist you.  My apologies for the inconvenience, but 
+your code will be better for the change.
+
+**Simple Tools for Facilitating Informative Parameter Checks in R Functions.**
 
 The typical process of checking arguments in functions is
 iterative.  In this process, an error may be returned and the user may fix

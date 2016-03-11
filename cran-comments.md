@@ -13,7 +13,16 @@ This NOTE was not observed on the local install
 
 
 ## Downstream dependencies
-There are no downstream dependencies for this package
-at this time.
+Downstream dependencies are HydeNet, mcParallelDo, and pixiedust.
+None are affected by this update.  
+The update changes the package startup message to indicate that 
+ArgumentCheck is no longer maintained and that I will be 
+removing it from CRAN in 2017.  (checkmate does everything I
+want now, and does it better)
+
+I am the maintainer on HydeNet and pixiedust, and have begun
+migrating my code.  I have notified the maintainer of 
+mcParallelDo and already updated his code (though he has not
+yet submitted to CRAN).
 
 Many thanks.

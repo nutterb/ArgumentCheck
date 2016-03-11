@@ -1,7 +1,8 @@
 Package: ArgumentCheck
 Date: 2015-08-01
-Title: Improved Communication to Users with Respect to Problems in Function Arguments
-Version: 0.10.1
+Title: Improved Communication to Users with Respect to Problems in Function
+    Arguments
+Version: 0.10.2
 Author: Benjamin Nutter
 Maintainer: Benjamin Nutter <benjamin.nutter@gmail.com>
 Description: The typical process of checking arguments in functions is
@@ -20,3 +21,4 @@ License: GPL-3
 LazyData: true
 URL: https://github.com/nutterb/ArgumentCheck
 BugReports: https://github.com/nutterb/ArgumentCheck/issues/
+RoxygenNote: 5.0.1
