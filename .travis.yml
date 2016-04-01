@@ -10,6 +10,9 @@ env:
    - R_BUILD_ARGS=--no-manual
    - R_CHECK_ARGS=--no-manual --as-cran
 
+r_packages:
+  - rmarkdown
+
 r_github_packages:
   - Rexamine/stringi
 

@@ -1,5 +1,6 @@
 ## Test environments
-* local Windows install (devel-2015-07-08 r68642)
+* local Windows install (R.3.2.4)
+* local Windows install (devel-2016-03-31 r70407)
 * x86_64-pc-linux-gnu (64-bit) (on travis-ci), R 3.2.1
 * win-builder (devel and release)
 
